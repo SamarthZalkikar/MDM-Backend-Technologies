@@ -75,7 +75,7 @@ python manage.py runserver
 - Checkout: http://127.0.0.1:8000/checkout/
 - Admin: http://127.0.0.1:8000/admin/
 
-8 sample products are already present in the database.
+8 sample products are already present in the database (reload anytime with `python manage.py seed_products`).
 
 ---
 
