@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Products</h1>
+<div class="grid">
+{% for p in products %}
+    <div class="card">
+        {% if p.image_url %}
+            <img src="{{ p.image_url }}" alt="{{ p.name }}">
+        {% else %}
+            <div class="no-img">No image</div>
+        {% endif %}
+        <h3><a href="{% url 'product_detail' p.id %}">{{ p.name }}</a></h3>
+        <p class="price">₹{{ p.price }}</p>
+        <p class="stock">Stock: {{ p.stock }}</p>
+        <a class="btn" href="{% url 'cart_add' p.id %}">Add to Cart</a>
+    </div>
+{% empty %}
+    <p>No products found. Add some from <a href="/admin/">Admin</a>.</p>
+{% endfor %}
+</div>
+{% endblock %}
