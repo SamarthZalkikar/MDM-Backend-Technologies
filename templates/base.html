@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyShop - Mini Amazon</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <a href="{% url 'product_list' %}" class="logo">MyShop 🛒</a>
+    <form method="get" action="{% url 'product_list' %}" class="search">
+        <input type="text" name="q" placeholder="Search products..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+    <a href="{% url 'cart_view' %}" class="cart-link">Cart ({{ cart_count|default:0 }})</a>
+</nav>
+
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <p class="msg">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</div>
+
+<footer>Mini Amazon clone built with Django + SQLite for learning.</footer>
+</body>
+</html>
